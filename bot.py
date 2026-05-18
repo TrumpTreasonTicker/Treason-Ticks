@@ -71,10 +71,10 @@ def post_to_bluesky():
         print("Could not update data. Skipping post.")
         return
 
-    post_text = (
+ post_text = (
         f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
-        f"🌐 Total Wealth: {data['total_wealth']}\n"
-        f"🏛️ Foreign Interests: {data['foreign']}\n\n"
+        f"{data['total_wealth']} Total Dollars of Treason\n"
+        f"{data['foreign']} Foreign Bribes\n\n"
         f"Source: House Oversight Democrats"
     )
 
