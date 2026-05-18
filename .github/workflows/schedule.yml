@@ -2,26 +2,25 @@ name: Hourly BlueSky Bot
 
 on:
   schedule:
-    # This runs at 12:00 UTC (7 AM EST) and 00:00 UTC (7 PM EST)
     - cron: '0 12,0 * * *'
-  workflow_dispatch: # This adds a manual "Run" button so you can test it anytime!
+  workflow_dispatch: 
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # <-- Updated to v4 to fix the Node warning
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5  # <-- Updated to v5 to fix the Node warning
         with:
           python-version: '3.10'
 
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
-          playwright install chromium
+          playwright install chromium --with-deps  # <-- Added --with-deps so the cloud server has all required files!
 
       - name: Run Bot
         env:
