@@ -71,7 +71,7 @@ def post_to_bluesky():
         print("Could not update data. Skipping post.")
         return
 
- post_text = (
+    post_text = (
         f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
         f"{data['total_wealth']} Total Dollars of Treason\n"
         f"{data['foreign']} Foreign Bribes\n\n"
@@ -85,7 +85,3 @@ def post_to_bluesky():
         print("Successfully posted to BlueSky!")
     except Exception as e:
         print(f"Error posting to BlueSky: {e}")
-
-# This tells the cloud to just run it once and stop
-if __name__ == "__main__":
-    post_to_bluesky()
