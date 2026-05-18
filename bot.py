@@ -85,3 +85,8 @@ def post_to_bluesky():
         print("Successfully posted to BlueSky!")
     except Exception as e:
         print(f"Error posting to BlueSky: {e}")
+
+# --- THE START BUTTON ---
+# This was the missing piece! It tells the cloud server to actually run the bot.
+if __name__ == "__main__":
+    post_to_bluesky()
