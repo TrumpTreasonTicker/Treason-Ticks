@@ -1,0 +1,30 @@
+name: Hourly BlueSky Bot
+
+on:
+  schedule:
+    # This runs at 12:00 UTC (7 AM EST) and 00:00 UTC (7 PM EST)
+    - cron: '0 12,0 * * *'
+  workflow_dispatch: # This adds a manual "Run" button so you can test it anytime!
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Run Bot
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: python bot.py
