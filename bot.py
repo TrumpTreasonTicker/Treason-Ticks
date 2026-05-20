@@ -83,7 +83,7 @@ def post_to_bluesky():
         f"{data['total_wealth']} Total Dollars of Treason\n"
         f"{data['foreign']} Foreign Bribes\n\n"
         f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
-        f"Source: House Oversight Democrats"
+        f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
     )
 
     try:
