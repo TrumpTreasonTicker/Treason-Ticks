@@ -1,6 +1,7 @@
 import os
 import time
 import re
+from datetime import date
 from playwright.sync_api import sync_playwright
 from atproto import Client
 
@@ -71,10 +72,17 @@ def post_to_bluesky():
         print("Could not update data. Skipping post.")
         return
 
+    # --- THE NEW COUNTER MATH ---
+    # Calculate days between Jan 20, 2025 and whatever day the script is currently running
+    inauguration_date = date(2025, 1, 20)
+    today = date.today()
+    days_without_impeachment = (today - inauguration_date).days
+
     post_text = (
         f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
         f"{data['total_wealth']} Total Dollars of Treason\n"
         f"{data['foreign']} Foreign Bribes\n\n"
+        f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
         f"Source: House Oversight Democrats"
     )
 
@@ -87,6 +95,5 @@ def post_to_bluesky():
         print(f"Error posting to BlueSky: {e}")
 
 # --- THE START BUTTON ---
-# This was the missing piece! It tells the cloud server to actually run the bot.
 if __name__ == "__main__":
     post_to_bluesky()
