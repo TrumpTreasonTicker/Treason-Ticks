@@ -1,6 +1,7 @@
 import os
 import time
 import re
+import math
 from datetime import date
 from playwright.sync_api import sync_playwright
 from atproto import Client
@@ -72,16 +73,22 @@ def post_to_bluesky():
         print("Could not update data. Skipping post.")
         return
 
-    # --- THE NEW COUNTER MATH ---
-    # Calculate days between Jan 20, 2025 and whatever day the script is currently running
+    # --- THE MATH SECTION ---
+    # 1. Calculate days since Jan 20, 2025
     inauguration_date = date(2025, 1, 20)
     today = date.today()
     days_without_impeachment = (today - inauguration_date).days
 
+    # 2. Calculate Hunter Biden Paintings
+    # Strip the formatting back off the total wealth so Python can do math with it
+    raw_wealth = float(data['total_wealth'].replace('$', '').replace(',', ''))
+    hunter_paintings = math.ceil(raw_wealth / 55000)
+
     post_text = (
         f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
         f"{data['total_wealth']} Total Dollars of Treason\n"
-        f"{data['foreign']} Foreign Bribes\n\n"
+        f"{data['foreign']} Foreign Bribes\n"
+        f"🎨 {hunter_paintings:,} Hunter Biden Paintings\n\n"
         f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
         f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
     )
