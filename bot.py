@@ -79,16 +79,18 @@ def post_to_bluesky():
     today = date.today()
     days_without_impeachment = (today - inauguration_date).days
 
-    # 2. Calculate Hunter Biden Paintings
-    # Strip the formatting back off the total wealth so Python can do math with it
+    # 2. Calculate Hunter Biden Paintings and Louvres
     raw_wealth = float(data['total_wealth'].replace('$', '').replace(',', ''))
     hunter_paintings = math.ceil(raw_wealth / 55000)
+    
+    # We divide by 7,500 and round to 1 decimal place (e.g., 12.1 Louvres)
+    louvres_worth = round(hunter_paintings / 7500, 1)
 
     post_text = (
         f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
         f"{data['total_wealth']} Total Dollars of Treason\n"
         f"{data['foreign']} Foreign Bribes\n"
-        f"🎨 {hunter_paintings:,} Hunter Biden Paintings\n\n"
+        f"🎨 {hunter_paintings:,} Hunter Biden Paintings ({louvres_worth:g} Louvres worth)\n\n"
         f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
         f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
     )
