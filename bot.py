@@ -77,14 +77,4 @@ def post_to_bluesky():
     # --- THE MATH SECTION ---
     
     # 1. Calculate days since Jan 20, 2025
-    inauguration_date = date(2025, 1, 20)
-    today = date.today()
-    days_without_impeachment = (today - inauguration_date).days
-    
-    # 2. Calculate NIH R01 Grants Not Funded
-    raw_wealth = float(data['total_wealth'].replace('$', '').replace(',', ''))
-    
-    # Divide the total by 664,000 and round to 1 decimal place
-    r01_grants = round(raw_wealth / 664000, 1)
-
-    post_text = (
+    inauguration_
