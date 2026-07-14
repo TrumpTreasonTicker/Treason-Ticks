@@ -77,4 +77,33 @@ def post_to_bluesky():
     # --- THE MATH SECTION ---
     
     # 1. Calculate days since Jan 20, 2025
-    inauguration_
+    inauguration_date = date(2025, 1, 20)
+    today = date.today()
+    days_without_impeachment = (today - inauguration_date).days
+    
+    # 2. Calculate NIH R01 Grants Not Funded
+    raw_wealth = float(data['total_wealth'].replace('$', '').replace(',', ''))
+    
+    # Divide the total by 664,000 and round to 1 decimal place
+    r01_grants = round(raw_wealth / 664000, 1)
+
+    # Added the missing closing parenthesis at the end of this block
+    post_text = (f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
+                 f"{data['total_wealth']} Total Dollars of Treason\n"
+                 f"{data['foreign']} Foreign Bribes\n"
+                 f"🔬 {r01_grants:g} R01 grants not funded\n\n"
+                 f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
+                 f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
+                 ) 
+
+    try:
+        client = Client()
+        client.login(BLUESKY_HANDLE, BLUESKY_APP_PASSWORD)
+        client.send_post(text=post_text)
+        print("Successfully posted to BlueSky!")
+    except Exception as e:
+        print(f"Error posting to BlueSky: {e}")
+
+# --- THE START BUTTON ---
+if __name__ == "__main__":
+    post_to_bluesky()
