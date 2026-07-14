@@ -91,7 +91,7 @@ def post_to_bluesky():
     post_text = (f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
                  f"{data['total_wealth']} Total Dollars of Treason\n"
                  f"{data['foreign']} Foreign Bribes\n"
-                 f"🔬 {r01_grants:g} R01 grants not funded\n\n"
+                 f"🔬 {r01_grants:g} R01 NIH grants not funded\n\n"
                  f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
                  f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
                  ) 
