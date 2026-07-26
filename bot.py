@@ -81,20 +81,19 @@ def post_to_bluesky():
     today = date.today()
     days_without_impeachment = (today - inauguration_date).days
     
-    # 2. Calculate NIH R01 Grants Not Funded
+    # 2. Calculate Diarrhea Parasite Inspector Salaries
     raw_wealth = float(data['total_wealth'].replace('$', '').replace(',', ''))
     
-    # Divide the total by 664,000 and round to 1 decimal place
-    r01_grants = round(raw_wealth / 664000, 1)
+    # Divide the total grift by 60,000
+    inspector_salaries = round(raw_wealth / 60000, 1)
 
-    # Added the missing closing parenthesis at the end of this block
     post_text = (f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
                  f"{data['total_wealth']} Total Dollars of Treason\n"
                  f"{data['foreign']} Foreign Bribes\n"
-                 f"🔬 {r01_grants:g} R01 NIH grants not funded\n\n"
+                 f"🦠 {inspector_salaries:g} diarrhea parasite inspector salaries\n\n"
                  f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
                  f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
-                 ) 
+                 )
 
     try:
         client = Client()
