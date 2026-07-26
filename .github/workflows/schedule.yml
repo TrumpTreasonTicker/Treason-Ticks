@@ -1,29 +1,28 @@
-name: Hourly BlueSky Bot
+name: Run Bot
 
 on:
   schedule:
-    - cron: '0 12,0 * * *'
-  workflow_dispatch: 
+    - cron: '0 12 * * *'  # Runs once per day at 12:00 UTC
+  workflow_dispatch:        # Keeps manual run button enabled
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4  # <-- Updated to v4 to fix the Node warning
-
+      - uses: actions/checkout@v4
+      
       - name: Set up Python
-        uses: actions/setup-python@v5  # <-- Updated to v5 to fix the Node warning
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          playwright install chromium --with-deps  # <-- Added --with-deps so the cloud server has all required files!
+          pip install atproto playwright
+          playwright install chromium --with-deps
 
-      - name: Run Bot
+      - name: Run Python script
         env:
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
-        run: python bot.py
+        run: python -u bot.py
