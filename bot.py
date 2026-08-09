@@ -81,16 +81,16 @@ def post_to_bluesky():
     today = date.today()
     days_without_impeachment = (today - inauguration_date).days
     
-    # 2. Calculate Diarrhea Parasite Inspector Salaries
+    # 2. Calculate Additional Wildland Firefighters
     raw_wealth = float(data['total_wealth'].replace('$', '').replace(',', ''))
     
-    # Divide the total grift by 60,000
-    inspector_salaries = round(raw_wealth / 60000, 1)
+    # Divide total grift by 100,000
+    wildland_firefighters = round(raw_wealth / 100000, 1)
 
     post_text = (f"🚨 Trump Family Digital Grift Tracker Update 🚨\n\n"
                  f"{data['total_wealth']} Total Dollars of Treason\n"
                  f"{data['foreign']} Foreign Bribes\n"
-                 f"🦠 {inspector_salaries:g} Salaries of diarrhea parasite inspectors\n\n"
+                 f"🧑‍🚒 {wildland_firefighters:g} Additional wildland firefighters keeping the West Coast from becoming a charcoal briquette \n\n"
                  f"🗓️ Days without impeachment: {days_without_impeachment}\n\n"
                  f"Source: https://oversightdemocrats.house.gov/trump-family-corruption-tracker"
                  )
